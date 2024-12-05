@@ -4,6 +4,10 @@
   import GradButton from "$lib/components/GradButton.svelte";
 </script>
 
+<svelte:head>
+  <title>ProjectX</title>
+</svelte:head>
+
 <div class="flex flex-col items-center justify-center h-screen">
   <Lottie animationData={projectx} className="max-w-sm glow" />
   <GradButton>APPLY NOW</GradButton>
