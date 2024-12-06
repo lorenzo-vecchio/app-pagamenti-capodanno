@@ -8,4 +8,8 @@
   });
 </script>
 
+<svelte:head>
+  <title>ProjectX</title>
+</svelte:head>
+
 {@render children()}
