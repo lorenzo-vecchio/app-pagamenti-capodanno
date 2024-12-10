@@ -8,6 +8,12 @@
     superForm,
   } from "sveltekit-superforms";
   import { zodClient } from "sveltekit-superforms/adapters";
+  import { CalendarDate, DateFormatter, getLocalTimeZone, parseDate, today, type DateValue } from "@internationalized/date";
+  import { Popover } from "bits-ui";
+  import { cn } from "$lib/utils";
+  import { buttonVariants } from "$lib/components/ui/button";
+  import { Calendar } from "$lib/components/ui/calendar";
+  import { CalendarIcon } from 'lucide-svelte';
 
   export let data: SuperValidated<Infer<FormSchema>>;
 
@@ -16,10 +22,23 @@
   });
 
   const { form: formData, enhance } = form;
+
+  const df = new DateFormatter("en-US", {
+    dateStyle: "long"
+  });
+ 
+  let value: DateValue | undefined;
+ 
+  $: value = $formData.dateOfBirth ? parseDate($formData.dateOfBirth) : undefined;
+ 
+  let placeholder: DateValue = today(getLocalTimeZone());
 </script>
 
 <form method="POST" use:enhance>
   <div class="md:flex md:flex-col lg:flex lg:flex-row items-end">
+
+    <!-- FIRST NAME -->
+
     <Form.Field {form} name="name">
       <Form.Control>
         {#snippet children({ props })}
@@ -29,6 +48,9 @@
       </Form.Control>
       <Form.FieldErrors />
     </Form.Field>
+
+    <!-- LAST NAME -->
+
     <Form.Field {form} name="lastName">
       <Form.Control>
         {#snippet children({ props })}
@@ -38,16 +60,12 @@
       <Form.FieldErrors />
     </Form.Field>
   </div>
-  <Form.Field {form} name="dateOfBirth">
-    <Form.Control>
-      {#snippet children({ props })}
-        <Form.Label>Your Birthday <span class="text-destructive">*</span></Form.Label>
-        <Input {...props} bind:value={$formData.dateOfBirth} />
-      {/snippet}
-    </Form.Control>
-    <Form.FieldErrors />
-  </Form.Field>
+
+  <!-- DATE OF BIRTH -->
+
+
   <div class="md:flex md:flex-col lg:flex lg:flex-row items-end">
+    <!-- EMAIL -->
     <Form.Field {form} name="email">
       <Form.Control>
         {#snippet children({ props })}
@@ -57,6 +75,8 @@
       </Form.Control>
       <Form.FieldErrors />
     </Form.Field>
+
+    <!-- INSTAGRAM USERNAME -->
     <Form.Field {form} name="instagramUsername">
       <Form.Control>
         {#snippet children({ props })}
@@ -66,5 +86,6 @@
       <Form.FieldErrors />
     </Form.Field>
   </div>
+
   <Form.Button>Submit</Form.Button>
 </form>
