@@ -26,6 +26,7 @@ model User {
   name              String
   lastName          String
   instagramUsername String
+  dateOfBirth       DateTime
   groupId           String
   group             Group    @relation(fields: [groupId], references: [uuid])
 }
