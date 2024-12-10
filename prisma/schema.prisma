@@ -25,7 +25,8 @@ model User {
   uuid              String   @id @default(uuid())
   name              String
   lastName          String
-  instagramUsername String
+  instagramUsername String   @unique
+  email             String   @unique
   dateOfBirth       DateTime
   groupId           String
   group             Group    @relation(fields: [groupId], references: [uuid])
