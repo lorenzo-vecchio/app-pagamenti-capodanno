@@ -19,15 +19,24 @@
 </script>
 
 <form method="POST" use:enhance>
-  <Form.Field {form} name="name">
-    <Form.Control>
-      {#snippet children({ props })}
-        <Form.Label>Name</Form.Label>
-        <Input {...props} bind:value={$formData.name} />
-      {/snippet}
-    </Form.Control>
-    <Form.Description>Your Name</Form.Description>
-    <Form.FieldErrors />
-  </Form.Field>
+  <div class="md:flex md:flex-col lg:flex lg:flex-row items-end">
+    <Form.Field {form} name="name">
+      <Form.Control>
+        {#snippet children({ props })}
+          <Form.Label>Your Name *</Form.Label>
+          <Input {...props} bind:value={$formData.name} />
+        {/snippet}
+      </Form.Control>
+      <Form.FieldErrors />
+    </Form.Field>
+    <Form.Field {form} name="lastName">
+      <Form.Control>
+        {#snippet children({ props })}
+          <Input {...props} bind:value={$formData.lastName} />
+        {/snippet}
+      </Form.Control>
+      <Form.FieldErrors />
+    </Form.Field>
+  </div>
   <Form.Button>Submit</Form.Button>
 </form>

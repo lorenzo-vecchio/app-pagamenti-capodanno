@@ -6,9 +6,9 @@ import { zod } from "sveltekit-superforms/adapters";
 import { PrismaClient } from '@prisma/client';
 
 export const load: ServerLoad = async () => {
-    return {
-        form: await superValidate(zod(formSchema)),
-    };
+  return {
+    form: await superValidate(zod(formSchema)),
+  };
 };
 
 export const actions: Actions = {

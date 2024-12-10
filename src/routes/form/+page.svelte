@@ -8,7 +8,7 @@
 
 <div class="flex flex-col items-center justify-between h-screen lg:px-10 px-8 py-20">
     <h1 class="font-bold text-lg lg:text-5xl">WHY SHOULD WE CHOOSE YOU?</h1>
-    <div class="">
+    <div class="flex flex-col">
         <h3 class="font-bold text-sm lg:text-xl uppercase">Tell us a little more about yourself</h3>
         <SettingsForm data={data.form} />
     </div>
