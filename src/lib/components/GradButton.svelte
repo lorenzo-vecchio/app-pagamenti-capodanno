@@ -8,6 +8,6 @@
     let props : Props = $props();
 </script>
 
-<Button class='bg-gradient-to-r from-customStart to-customEnd text-white font-bold py-2 px-4 {props.class}' href={props.href}>
+<Button class='text-white font-bold py-2 px-4 {props.class}' href={props.href}>
     {@render props.children()}
 </Button>

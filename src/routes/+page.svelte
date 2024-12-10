@@ -7,7 +7,7 @@
 
 <div class="flex flex-col items-center justify-center h-screen">
   <Lottie animationData={projectx} className="max-w-sm glow" />
-  <GradButton class='mt-4 text-2xl p-6' href='/form'>APPLY NOW</GradButton>
+  <GradButton class='mt-4 text-2xl p-6 bg-gradient-to-r from-customStart to-customEnd' href='/form'>APPLY NOW</GradButton>
 </div>
 
 <style>
