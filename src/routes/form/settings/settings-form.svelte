@@ -23,7 +23,7 @@
     <Form.Field {form} name="name">
       <Form.Control>
         {#snippet children({ props })}
-          <Form.Label>Your Name *</Form.Label>
+          <Form.Label>Your Name <span class="text-destructive">*</span></Form.Label>
           <Input placeholder="Name" {...props} bind:value={$formData.name} />
         {/snippet}
       </Form.Control>
@@ -32,7 +32,7 @@
     <Form.Field {form} name="lastName">
       <Form.Control>
         {#snippet children({ props })}
-          <Input placeholder="Lastname" {...props} bind:value={$formData.lastName} />
+          <Input placeholder="Last Name" {...props} bind:value={$formData.lastName} />
         {/snippet}
       </Form.Control>
       <Form.FieldErrors />
@@ -41,7 +41,7 @@
   <Form.Field {form} name="dateOfBirth">
     <Form.Control>
       {#snippet children({ props })}
-        <Form.Label>Your Birthday *</Form.Label>
+        <Form.Label>Your Birthday <span class="text-destructive">*</span></Form.Label>
         <Input {...props} bind:value={$formData.dateOfBirth} />
       {/snippet}
     </Form.Control>
@@ -51,7 +51,7 @@
     <Form.Field {form} name="email">
       <Form.Control>
         {#snippet children({ props })}
-          <Form.Label>How can we contact you? *</Form.Label>
+          <Form.Label>How can we contact you? <span class="text-destructive">*</span></Form.Label>
           <Input placeholder="Email" {...props} bind:value={$formData.email} />
         {/snippet}
       </Form.Control>
