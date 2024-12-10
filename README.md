@@ -37,10 +37,8 @@ You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
 
-
-
-
 # Setup iniziale:
+
 ```
 docker run --name mysql-prisma-dev \
   -e MYSQL_ROOT_PASSWORD=secret \
@@ -52,5 +50,5 @@ docker run --name mysql-prisma-dev \
 ```
 
 ```
-npx prisma migrate dev --name init  
+npx prisma migrate dev --name init
 ```
