@@ -1,12 +1,16 @@
 <script lang="ts">
+    import type { PageData } from "./$types.js";
     import GradButton from "$lib/components/GradButton.svelte";
-    import { z } from "zod";
+    import SettingsForm from "./settings/settings-form.svelte";
+
+    export let data: PageData;
 </script>
 
 <div class="flex flex-col items-center justify-between h-screen lg:px-10 px-8 py-20">
     <h1 class="font-bold text-lg lg:text-5xl">WHY SHOULD WE CHOOSE YOU?</h1>
     <div class="">
         <h3 class="font-bold text-sm lg:text-xl uppercase">Tell us a little more about yourself</h3>
+        <SettingsForm data={data.form} />
     </div>
     <div class="flex flex-row justify-between w-full">
         <GradButton class='mt-4 lg:text-2xl lg:p-6 bg-neutral-800 uppercase' href='/'>Back</GradButton>
