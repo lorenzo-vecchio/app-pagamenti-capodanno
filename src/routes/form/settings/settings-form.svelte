@@ -135,7 +135,7 @@
   </Form.Field>
 
   <!-- REASON -->
-  <Form.Field class="w-full" {form} name="reason">
+  <Form.Field class="w-full mb-20" {form} name="reason">
     <Form.Control>
       {#snippet children({ props })}
       <Form.Label class='mb-3'
