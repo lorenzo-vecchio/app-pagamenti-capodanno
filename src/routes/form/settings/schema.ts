@@ -15,7 +15,7 @@ export const formSchema = z.object({
     .min(2, { message: "Username must be at least 2 characters" })
     .max(50, { message: "Username must be at most 50 characters" }),
   email: z.string().email({ message: "Invalid email" }),
-  dateOfBirth: z.string().date("Invalid date"),
+  dateOfBirth: z.string().date("Invalid date").refine((v) => v, { message: "A date of birth is required." }),
 });
 
 export type FormSchema = typeof formSchema;
