@@ -15,14 +15,10 @@ export const actions: Actions = {
   default: async (event) => {
     // default zod validation
     const form = await superValidate(event, zod(formSchema));
-    if (!form.valid) {
-      return fail(400, {
-        form,
-      });
-    }
+
     // custom validation checking if user already registered
     const prisma = new PrismaClient();
-    const { instagramUsername, email } = form.data;
+    const { instagramUsername, email, dateOfBirth } = form.data;
     const existingEmail = await prisma.user.findFirst({
       where: {
         email,
@@ -36,16 +32,20 @@ export const actions: Actions = {
     if (existingEmail) {
       form.errors.email = ["This email is already registered."];
       form.valid = false;
-      return fail(400, { form });
     }
     if (existingInstagram) {
       form.errors.instagramUsername = [
         "This Instagram username is already registered.",
       ];
       form.valid = false;
+    }
+
+    // form not valid
+    if (!form.valid) {
       return fail(400, { form });
     }
 
+    // form valid
     return {
       form,
     };
