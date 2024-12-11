@@ -51,4 +51,5 @@ docker run --name mysql-prisma-dev \
 
 ```
 npx prisma migrate dev --name init
+prisma generate
 ```
