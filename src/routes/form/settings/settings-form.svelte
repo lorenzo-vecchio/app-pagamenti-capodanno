@@ -7,6 +7,7 @@
   import type { Infer, SuperValidated } from "sveltekit-superforms";
   import { superForm } from "sveltekit-superforms";
   import { zodClient } from "sveltekit-superforms/adapters";
+  import { Textarea } from "$lib/components/ui/textarea";
 
   export let data: SuperValidated<Infer<FormSchema>>;
 
@@ -114,7 +115,7 @@
   </div>
 
   <!-- IS ALONE -->
-  <Form.Field class="w-full flex flex-col" {form} name="isGroup">
+  <Form.Field class="w-full flex flex-col mb-4" {form} name="isGroup">
     <Form.Control>
       {#snippet children({ props })}
         <Form.Label class='mb-3'
@@ -132,6 +133,28 @@
       <Form.FieldErrors />
     </div>
   </Form.Field>
+
+  <!-- REASON -->
+  <Form.Field class="w-full" {form} name="reason">
+    <Form.Control>
+      {#snippet children({ props })}
+      <Form.Label class='mb-3'
+          >Reason why you should come <span class="text-destructive">*</span></Form.Label
+        >
+        <Textarea
+          placeholder="Reason why should choose you...   (min. 200 characters max 500)"
+          {...props}
+          bind:value={$formData.reason}
+        />
+      {/snippet}
+    </Form.Control>
+    <div class="flex flex-row">
+      <Form.FieldErrors class="text-transparent">c</Form.FieldErrors>
+      <Form.FieldErrors />
+    </div>
+  </Form.Field>
+
+<!-- SUBMIT BUTTON -->
 
   <div class="flex flex-row justify-between w-full fixed bottom-0 left-0 bg-background">
     <GradButton

@@ -15,6 +15,10 @@ export const formSchema = z.object({
     .min(2, { message: "Username must be at least 2 characters" })
     .max(50, { message: "Username must be at most 50 characters" }),
   email: z.string().email({ message: "Invalid email" }),
+  reason: z
+    .string()
+    .min(200, { message: "Reason must be at least 200 characters" })
+    .max(500, { message: "Reason must be at most 500 characters" }),
   dateOfBirth: z
     .string()
     .date("Invalid date")

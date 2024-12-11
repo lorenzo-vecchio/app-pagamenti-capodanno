@@ -49,8 +49,9 @@ export const actions: Actions = {
     const group = await prisma.group.create({
       data: {
         closed: !form.data.isGroup,
+        reason: form.data.reason,
       },
-    })
+    });
     const user = await prisma.user.create({
       data: {
         name: form.data.name,
@@ -60,14 +61,14 @@ export const actions: Actions = {
         dateOfBirth: new Date(form.data.dateOfBirth),
         groupId: group.uuid,
       },
-    })
+    });
     await prisma.$disconnect();
 
     // redirect to next page
-    if(!form.data.isGroup) {
-      throw redirect(303, '/closed-group');
+    if (!form.data.isGroup) {
+      throw redirect(303, "/closed-group");
     } else {
-      throw redirect(303, '/share-group');
+      throw redirect(303, "/share-group");
     }
     return {
       form,
