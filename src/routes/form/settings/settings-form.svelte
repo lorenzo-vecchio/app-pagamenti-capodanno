@@ -17,7 +17,7 @@
 </script>
 
 <form method="POST" class="w-full" use:enhance>
-  <div class="md:flex md:flex-col lg:flex lg:flex-row items-end justify-between gap-x-6">
+  <div class="flex flex-col md:flex-row md:items-end gap-x-6">
     <!-- FIRST NAME -->
 
     <Form.Field class="lg:w-1/3" {form} name="name">
@@ -49,7 +49,7 @@
   </div>
 
   <!-- DATE OF BIRTH -->
-  <Form.Field class="w-full" {form} name="dateOfBirth">
+  <Form.Field class="w-full lg:w-1/4" {form} name="dateOfBirth">
     <Form.Control>
       {#snippet children({ props })}
         <Form.Label
