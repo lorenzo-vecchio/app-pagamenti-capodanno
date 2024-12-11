@@ -114,7 +114,7 @@
   </div>
 
   <!-- IS ALONE -->
-  <Form.Field class="w-full flex flex-col" {form} name="isAlone">
+  <Form.Field class="w-full flex flex-col" {form} name="isGroup">
     <Form.Control>
       {#snippet children({ props })}
         <Form.Label class='mb-3'
@@ -122,7 +122,7 @@
         >
         <div class="flex flex-row">
           No
-          <Switch includeInput {...props} bind:checked={$formData.isAlone} class='mx-2' />
+          <Switch includeInput {...props} bind:checked={$formData.isGroup} class='mx-2' />
           Yes
         </div>
       {/snippet}
