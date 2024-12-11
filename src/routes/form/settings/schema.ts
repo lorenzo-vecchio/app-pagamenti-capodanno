@@ -33,6 +33,7 @@ export const formSchema = z.object({
             (monthDifference === 0 && dayDifference >= 0)))
       );
     }, "You must be at least 18 years old"),
+  isAlone: z.boolean(),
 });
 
 export type FormSchema = typeof formSchema;

@@ -1,5 +1,5 @@
 import type { ServerLoad, Actions } from "@sveltejs/kit";
-import { fail } from "@sveltejs/kit";
+import { fail, redirect } from "@sveltejs/kit";
 import { superValidate } from "sveltekit-superforms";
 import { formSchema } from "./settings/schema";
 import { zod } from "sveltekit-superforms/adapters";
@@ -18,7 +18,7 @@ export const actions: Actions = {
 
     // custom validation checking if user already registered
     const prisma = new PrismaClient();
-    const { instagramUsername, email, dateOfBirth } = form.data;
+    const { instagramUsername, email } = form.data;
     const existingEmail = await prisma.user.findFirst({
       where: {
         email,
@@ -46,6 +46,29 @@ export const actions: Actions = {
     }
 
     // form valid
+    const group = await prisma.group.create({
+      data: {
+        closed: form.data.isAlone,
+      },
+    })
+    const user = await prisma.user.create({
+      data: {
+        name: form.data.name,
+        lastName: form.data.lastName,
+        email: form.data.email,
+        instagramUsername: form.data.instagramUsername,
+        dateOfBirth: new Date(form.data.dateOfBirth),
+        groupId: group.uuid,
+      },
+    })
+    await prisma.$disconnect();
+
+    // redirect to next page
+    if(form.data.isAlone) {
+      throw redirect(303, '/closed-group');
+    } else {
+      throw redirect(303, '/share-group');
+    }
     return {
       form,
     };
