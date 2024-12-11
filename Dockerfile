@@ -7,7 +7,7 @@ COPY package*.json .
 RUN npm ci
 
 COPY . .
-RUN npm run prisma-generate
+RUN npx prisma migrate dev
 RUN npm run build
 
 ENTRYPOINT ["node", "build"]
