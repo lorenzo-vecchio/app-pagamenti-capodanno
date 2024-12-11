@@ -1,4 +1,5 @@
 <script lang="ts">
+  import GradButton from "$lib/components/GradButton.svelte";
   import * as Form from "$lib/components/ui/form/index";
   import { Input } from "$lib/components/ui/input/index";
   import { formSchema, type FormSchema } from "./schema";
@@ -20,7 +21,7 @@
   <div class="flex flex-col md:flex-row md:items-end gap-x-6">
     <!-- FIRST NAME -->
 
-    <Form.Field class="lg:w-1/3" {form} name="name">
+    <Form.Field class="lg:w-1/4" {form} name="name">
       <Form.Control>
         {#snippet children({ props })}
           <Form.Label
@@ -29,12 +30,15 @@
           <Input placeholder="Name" {...props} bind:value={$formData.name} />
         {/snippet}
       </Form.Control>
-      <Form.FieldErrors />
+      <div class="flex flex-row">
+        <Form.FieldErrors class='text-transparent'>c</Form.FieldErrors>
+        <Form.FieldErrors />
+      </div>
     </Form.Field>
 
     <!-- LAST NAME -->
 
-    <Form.Field class="lg:w-1/3" {form} name="lastName">
+    <Form.Field class="lg:w-1/4" {form} name="lastName">
       <Form.Control>
         {#snippet children({ props })}
           <Input
@@ -44,7 +48,10 @@
           />
         {/snippet}
       </Form.Control>
-      <Form.FieldErrors />
+      <div class="flex flex-row">
+        <Form.FieldErrors class='text-transparent'>c</Form.FieldErrors>
+        <Form.FieldErrors />
+      </div>
     </Form.Field>
   </div>
 
@@ -59,7 +66,13 @@
         <Input type='date' {...props} bind:value={$formData.dateOfBirth} />
       {/snippet}
     </Form.Control>
-    <Form.FieldErrors />
+    <div class="flex flex-row">
+      <div class="flex flex-col">
+        <Form.FieldErrors class='text-transparent'>c</Form.FieldErrors>
+      <Form.FieldErrors class='text-transparent'>c</Form.FieldErrors>
+      </div>
+      <Form.FieldErrors />
+    </div>
   </Form.Field>
 
   <div class="md:flex md:flex-col lg:flex lg:flex-row items-end justify-between gap-x-6">
@@ -74,7 +87,10 @@
           <Input placeholder="Email" {...props} bind:value={$formData.email} />
         {/snippet}
       </Form.Control>
-      <Form.FieldErrors />
+      <div class="flex flex-row">
+        <Form.FieldErrors class='text-transparent'>c</Form.FieldErrors>
+        <Form.FieldErrors />
+      </div>
     </Form.Field>
 
     <!-- INSTAGRAM USERNAME -->
@@ -88,9 +104,17 @@
           />
         {/snippet}
       </Form.Control>
-      <Form.FieldErrors />
+      <div class="flex flex-row">
+        <Form.FieldErrors class='text-transparent'>c</Form.FieldErrors>
+        <Form.FieldErrors />
+      </div>
     </Form.Field>
   </div>
 
-  <Form.Button>Submit</Form.Button>
+  <div class="flex flex-row w-full relative">
+    <GradButton class='fixed bottom-5 left-12 mt-4 lg:text-2xl lg:p-6 bg-neutral-800 uppercase' href='/'>Back</GradButton>
+    <Form.Button class='fixed bottom-5 right-12 mt-4 lg:text-2xl lg:p-6 text-black uppercase'>Submit</Form.Button>
+  </div>
+
+  
 </form>

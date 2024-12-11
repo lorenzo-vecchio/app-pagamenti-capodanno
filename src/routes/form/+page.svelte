@@ -12,8 +12,4 @@
         <h3 class="font-bold text-sm lg:text-xl uppercase">Tell us a little more about yourself</h3>
         <SettingsForm data={data.form} />
     </div>
-    <div class="flex flex-row justify-between w-full">
-        <GradButton class='mt-4 lg:text-2xl lg:p-6 bg-neutral-800 uppercase' href='/'>Back</GradButton>
-        <GradButton class='mt-4 lg:text-2xl lg:p-6 text-black uppercase' href='/'>Next</GradButton>
-    </div>
 </div>
