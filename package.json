@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "npx prisma migrate dev --name init && prisma generate && vite build",
+    "build": "npx prisma migrate deploy && prisma generate && vite build",
     "preview": "vite preview",
     "start": "node build",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
