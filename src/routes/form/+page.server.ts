@@ -5,9 +5,33 @@ import { formSchema } from "./settings/schema";
 import { zod } from "sveltekit-superforms/adapters";
 import { PrismaClient } from "@prisma/client";
 
-export const load: ServerLoad = async () => {
+export const load: ServerLoad = async ({ url }) => {
+  const groupId = url.searchParams.get("groupId");
+
+  // Default form data in case groupId is not provided
+  const preloadedData = {
+    isGroup: true, // Default value
+    reason: '', // Default empty string
+  };
+
+  if (groupId) {
+    // Fetch the group data if groupId is available
+    const prisma = new PrismaClient();
+    const group = await prisma.group.findFirst({
+      where: {
+        uuid: groupId,
+      },
+    });
+
+    if (group) {
+      preloadedData.isGroup = true;
+      preloadedData.reason = group.reason ?? '';
+    }
+  }
+
+  // Return the preloaded data without validation
   return {
-    form: await superValidate(zod(formSchema)),
+    form: preloadedData, // No validation here
   };
 };
 
@@ -46,6 +70,34 @@ export const actions: Actions = {
     }
 
     // form valid
+
+    // user came from group page
+    const paramsGroupId = event.url.searchParams.get("groupId");
+    if (paramsGroupId) {
+      const group = await prisma.group.findFirst({
+        where: {
+          uuid: paramsGroupId,
+        },
+      });
+      if (group?.closed) {
+        form.errors.reason = ["This group is closed."];
+        form.valid = false;
+        return fail(400, { form });
+      }
+      const user = await prisma.user.create({
+        data: {
+          name: form.data.name,
+          lastName: form.data.lastName,
+          email: form.data.email,
+          instagramUsername: form.data.instagramUsername,
+          dateOfBirth: new Date(form.data.dateOfBirth),
+          groupId: paramsGroupId,
+        },
+      });
+      throw redirect(303, "/group/" + paramsGroupId);
+    }
+
+    // user came from home page
     const group = await prisma.group.create({
       data: {
         closed: !form.data.isGroup,
@@ -68,7 +120,7 @@ export const actions: Actions = {
       },
       data: {
         creatorId: user.uuid,
-      }
+      },
     });
     await prisma.$disconnect();
 

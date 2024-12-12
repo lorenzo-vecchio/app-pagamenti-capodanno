@@ -9,9 +9,13 @@
   import { zodClient } from "sveltekit-superforms/adapters";
   import { Textarea } from "$lib/components/ui/textarea";
   import { Button } from "$lib/components/ui/button";
+  import { page } from "$app/stores";
+  $: paramsGroupId = $page.url.searchParams.get("groupId");
 
+  // Import the data returned by the load function
   export let data: SuperValidated<Infer<FormSchema>>;
 
+  // Initialize the form
   const form = superForm(data, {
     validators: zodClient(formSchema),
     taintedMessage: null,
@@ -22,7 +26,6 @@
 
 <form method="POST" class="w-full mt-10 relative" use:enhance>
   <div class="flex flex-col md:flex-row md:items-end gap-x-6 mb-4">
-
     <!-- FIRST NAME -->
     <Form.Field class="lg:w-1/4" {form} name="name">
       <Form.Control>
@@ -116,15 +119,25 @@
   </div>
 
   <!-- IS ALONE -->
-  <Form.Field class="w-full flex flex-col mb-4" {form} name="isGroup">
+
+  <Form.Field
+    class="w-full flex flex-col mb-4 {paramsGroupId ? 'invisible' : 'visible'}"
+    {form}
+    name="isGroup"
+  >
     <Form.Control>
       {#snippet children({ props })}
-        <Form.Label class='mb-3'
+        <Form.Label class="mb-3"
           >Are you a group? <span class="text-destructive">*</span></Form.Label
         >
         <div class="flex flex-row">
           No
-          <Switch includeInput {...props} bind:checked={$formData.isGroup} class='mx-2' />
+          <Switch
+            includeInput
+            {...props}
+            bind:checked={$formData.isGroup}
+            class="mx-2"
+          />
           Yes
         </div>
       {/snippet}
@@ -136,11 +149,16 @@
   </Form.Field>
 
   <!-- REASON -->
-  <Form.Field class="w-full mb-20" {form} name="reason">
+  <Form.Field
+    class="w-full mb-20 {paramsGroupId ? 'invisible' : 'visible'}"
+    {form}
+    name="reason"
+  >
     <Form.Control>
       {#snippet children({ props })}
-      <Form.Label class='mb-3'
-          >Reason why you should come <span class="text-destructive">*</span></Form.Label
+        <Form.Label class="mb-3"
+          >Reason why you should come <span class="text-destructive">*</span
+          ></Form.Label
         >
         <Textarea
           placeholder="Reason why should choose you...   (min. 200 characters max 500)"
@@ -155,14 +173,24 @@
     </div>
   </Form.Field>
 
-<!-- SUBMIT BUTTON -->
+  <!-- SUBMIT BUTTON -->
 
-  <div class="flex flex-row justify-between w-full fixed bottom-0 left-0 bg-background">
-    <Button
-      variant="secondary"
-      class="mt-3 mb-3 ml-3 lg:text-2xl lg:p-6 uppercase font-bold"
-      href="/">Back</Button
-    >
+  <div
+    class="flex flex-row justify-between w-full fixed bottom-0 left-0 bg-background"
+  >
+    {#if paramsGroupId}
+      <Button
+        variant="secondary"
+        class="mt-3 mb-3 ml-3 lg:text-2xl lg:p-6 uppercase font-bold"
+        href="/group/{paramsGroupId}">Back</Button
+      >
+    {:else}
+      <Button
+        variant="secondary"
+        class="mt-3 mb-3 ml-3 lg:text-2xl lg:p-6 uppercase font-bold"
+        href="/">Back</Button
+      >
+    {/if}
     <Form.Button
       class="mt-3 mb-3 mr-3 lg:text-2xl lg:p-6 text-black uppercase font-bold"
       >Submit</Form.Button

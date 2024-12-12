@@ -2,7 +2,8 @@ import type { ServerLoad, Actions } from "@sveltejs/kit";
 import { error } from "@sveltejs/kit";
 import { PrismaClient } from "@prisma/client";
 
-export const load: ServerLoad = async ({ params }) => {
+export const load: ServerLoad = async ({ params, depends }) => {
+  depends("r:r");
   const prisma = new PrismaClient();
   const group = await prisma.group.findFirst({
     where: {
@@ -15,9 +16,7 @@ export const load: ServerLoad = async ({ params }) => {
   });
   if (group) {
     return {
-      creator: group.createdBy?.name + " " + group.createdBy?.lastName,
-      id: group.uuid,
-      filled: group.users.length,
+      group,
     };
   }
   error(404, "Not found");
