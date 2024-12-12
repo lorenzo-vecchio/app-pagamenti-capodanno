@@ -16,8 +16,10 @@ datasource db {
 model Group {
   uuid      String   @id @default(uuid())
   closed    Boolean  @default(false)
-  users     User[]
-  reason   String?
+  users     User[]   @relation("GroupUsers")
+  reason    String?  @db.VarChar(500)
+  creatorId String?
+  createdBy User?    @relation("GroupCreator", fields: [creatorId], references: [uuid])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -30,5 +32,6 @@ model User {
   email             String   @unique
   dateOfBirth       DateTime
   groupId           String
-  group             Group    @relation(fields: [groupId], references: [uuid])
+  group             Group    @relation("GroupUsers", fields: [groupId], references: [uuid])
+  createdGroup      Group[]  @relation("GroupCreator")
 }

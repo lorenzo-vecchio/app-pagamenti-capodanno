@@ -8,6 +8,7 @@
   import { superForm } from "sveltekit-superforms";
   import { zodClient } from "sveltekit-superforms/adapters";
   import { Textarea } from "$lib/components/ui/textarea";
+  import { Button } from "$lib/components/ui/button";
 
   export let data: SuperValidated<Infer<FormSchema>>;
 
@@ -157,9 +158,10 @@
 <!-- SUBMIT BUTTON -->
 
   <div class="flex flex-row justify-between w-full fixed bottom-0 left-0 bg-background">
-    <GradButton
-      class="mt-3 mb-3 ml-3 lg:text-2xl lg:p-6 bg-neutral-800 uppercase"
-      href="/">Back</GradButton
+    <Button
+      variant="secondary"
+      class="mt-3 mb-3 ml-3 lg:text-2xl lg:p-6 uppercase font-bold"
+      href="/">Back</Button
     >
     <Form.Button
       class="mt-3 mb-3 mr-3 lg:text-2xl lg:p-6 text-black uppercase font-bold"

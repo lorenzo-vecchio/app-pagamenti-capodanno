@@ -62,13 +62,21 @@ export const actions: Actions = {
         groupId: group.uuid,
       },
     });
+    const updatedGroup = await prisma.group.update({
+      where: {
+        uuid: group.uuid,
+      },
+      data: {
+        creatorId: user.uuid,
+      }
+    });
     await prisma.$disconnect();
 
     // redirect to next page
     if (!form.data.isGroup) {
       throw redirect(303, "/closed-group");
     } else {
-      throw redirect(303, "/share-group");
+      throw redirect(303, "/share-group/" + group.uuid);
     }
     return {
       form,
