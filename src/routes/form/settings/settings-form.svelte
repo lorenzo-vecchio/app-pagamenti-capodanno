@@ -157,22 +157,15 @@
     <Form.Control>
       {#snippet children({ props })}
         <Form.Label class="mb-3"
-          >Perchè dovresti essere selezionato?</Form.Label
+          >Perchè dovresti essere selezionato? <span class="text-gray-400"> (Messaggio opzionale)</span></Form.Label
         >
         <Textarea
-          placeholder="Messaggio opzionale, incrementa le tue chance di essere selezionato"
+          placeholder="Vista l’alta richiesta non possiamo accontentare tutti. Incrementa{$formData.isGroup ? 'te' : ''} quindi le {$formData.isGroup ? 'vostre' : 'tue'} chance raccontandoci perché dovrest{$formData.isGroup ? 'e' : 'i'} essere selezionat{$formData.isGroup ? 'i' : 'o'}!"
           {...props}
           bind:value={$formData.reason}
         />
       {/snippet}
     </Form.Control>
-    <Form.Description>
-      {#if $formData.isGroup}
-      Vista l’alta richiesta, non possiamo accettare tutti. Raccontaci quindi perché dovremmo scegliere proprio il tuo gruppo di amici!
-      {:else}
-      Vista l’alta richiesta, non possiamo accettare tutti. Raccontaci quindi perché dovremmo scegliere proprio te!
-      {/if}
-    </Form.Description>
     <div class="flex flex-row">
       <Form.FieldErrors class="text-transparent">c</Form.FieldErrors>
       <Form.FieldErrors />
@@ -198,7 +191,7 @@
       >
     {/if}
     <Form.Button
-      class="mt-3 mb-3 mr-3 lg:text-2xl lg:p-6 text-white bg-gradient-to-r from-customStart to-customEnd uppercase font-bold"
+      class="mt-3 mb-3 mr-3 lg:text-2xl lg:p-6 text-white bg-gradient-to-r from-customStart to-customEnd uppercase integral-bold"
       >Submit</Form.Button
     >
   </div>

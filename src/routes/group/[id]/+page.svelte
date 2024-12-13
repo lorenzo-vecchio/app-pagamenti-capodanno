@@ -98,7 +98,7 @@
     <div class="flex flex-row mt-10">
       <Button class='mr-20' href='/form?groupId={data.group.uuid}'>Add+</Button>
       <button on:click={submitGroupForVerification}>
-        <Button>Submit for verification</Button>
+        <Button class='text-white bg-gradient-to-r from-customStart to-customEnd uppercase integral-bold'>Submit for verification</Button>
       </button>
     </div>
   {/if}
