@@ -48,7 +48,7 @@
       <Form.Control>
         {#snippet children({ props })}
           <Input
-            placeholder="Cogome"
+            placeholder="Cognome"
             {...props}
             bind:value={$formData.lastName}
           />
