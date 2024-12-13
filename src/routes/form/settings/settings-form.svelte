@@ -31,9 +31,9 @@
       <Form.Control>
         {#snippet children({ props })}
           <Form.Label
-            >Your Name <span class="text-destructive">*</span></Form.Label
+            >Il tuo Nome <span class="text-destructive">*</span></Form.Label
           >
-          <Input placeholder="Name" {...props} bind:value={$formData.name} />
+          <Input placeholder="Nome" {...props} bind:value={$formData.name} />
         {/snippet}
       </Form.Control>
       <div class="flex flex-row">
@@ -48,7 +48,7 @@
       <Form.Control>
         {#snippet children({ props })}
           <Input
-            placeholder="Last Name"
+            placeholder="Cogome"
             {...props}
             bind:value={$formData.lastName}
           />
@@ -66,7 +66,7 @@
     <Form.Control>
       {#snippet children({ props })}
         <Form.Label
-          >Date of birth <span class="text-destructive">*</span></Form.Label
+          >Data di nascita <span class="text-destructive">*</span></Form.Label
         >
         <Input type="date" {...props} bind:value={$formData.dateOfBirth} />
       {/snippet}
@@ -88,7 +88,7 @@
       <Form.Control>
         {#snippet children({ props })}
           <Form.Label
-            >How can we contact you? <span class="text-destructive">*</span
+            >Come ti possiamo contattare? <span class="text-destructive">*</span
             ></Form.Label
           >
           <Input placeholder="Email" {...props} bind:value={$formData.email} />
@@ -105,7 +105,7 @@
       <Form.Control>
         {#snippet children({ props })}
           <Input
-            placeholder="Instagram Account"
+            placeholder="Account Instagram"
             {...props}
             bind:value={$formData.instagramUsername}
           />
@@ -128,7 +128,7 @@
     <Form.Control>
       {#snippet children({ props })}
         <Form.Label class="mb-3"
-          >Are you a group? <span class="text-destructive">*</span></Form.Label
+          >Siete un gruppo? <span class="text-destructive">*</span></Form.Label
         >
         <div class="flex flex-row">
           No
@@ -138,7 +138,7 @@
             bind:checked={$formData.isGroup}
             class="mx-2"
           />
-          Yes
+          si
         </div>
       {/snippet}
     </Form.Control>
@@ -157,7 +157,7 @@
     <Form.Control>
       {#snippet children({ props })}
         <Form.Label class="mb-3"
-          >Reason why you should come</Form.Label
+          >Perchè dovresti venire?</Form.Label
         >
         <Textarea
           placeholder="Messaggio opzionale, incrementa le tue chance di essere selezionato"
