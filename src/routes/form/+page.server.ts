@@ -11,7 +11,7 @@ export const load: ServerLoad = async ({ url }) => {
   // Default form data in case groupId is not provided
   const preloadedData = {
     isGroup: true, // Default value
-    reason: '', // Default empty string
+    reason: "", // Default empty string
   };
 
   if (groupId) {
@@ -25,7 +25,7 @@ export const load: ServerLoad = async ({ url }) => {
 
     if (group) {
       preloadedData.isGroup = true;
-      preloadedData.reason = group.reason ?? '';
+      preloadedData.reason = group.reason ?? "";
     }
   }
 

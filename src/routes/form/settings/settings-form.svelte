@@ -157,7 +157,7 @@
     <Form.Control>
       {#snippet children({ props })}
         <Form.Label class="mb-3"
-          >Perchè dovresti venire?</Form.Label
+          >Perchè dovresti essere selezionato?</Form.Label
         >
         <Textarea
           placeholder="Messaggio opzionale, incrementa le tue chance di essere selezionato"
@@ -198,7 +198,7 @@
       >
     {/if}
     <Form.Button
-      class="mt-3 mb-3 mr-3 lg:text-2xl lg:p-6 text-black uppercase font-bold"
+      class="mt-3 mb-3 mr-3 lg:text-2xl lg:p-6 text-white bg-gradient-to-r from-customStart to-customEnd uppercase font-bold"
       >Submit</Form.Button
     >
   </div>
