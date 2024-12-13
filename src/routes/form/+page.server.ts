@@ -126,7 +126,7 @@ export const actions: Actions = {
 
     // redirect to next page
     if (!form.data.isGroup) {
-      throw redirect(303, "/closed-group");
+      throw redirect(303, "/submission-confirmation");
     } else {
       throw redirect(303, "/share-group/" + group.uuid);
     }
