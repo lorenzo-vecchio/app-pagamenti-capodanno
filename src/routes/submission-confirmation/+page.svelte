@@ -10,18 +10,18 @@
     <p
         class="text-center uppercase text-white text-sm lg:text-xl font-black bg-clip-text bg-gradient-to-r from-customStart to-customEnd"
     >
-        Your request has been <span class="text-transparent">saved !</span>
+        La tua richiesta è stata <span class="text-transparent">salvata !</span>
         <br />
-        You will now receive
-        <span class="text-transparent">a confirmation email.</span>
+        Ora riceverai 
+        <span class="text-transparent">una mail di conferma</span>
         <br />
-        If <span class="text-transparent">selected</span>, you'll receive
-        <span class="text-transparent">a second email</span>
-        with all the
+        Se <span class="text-transparent">selezionato</span>, riceverai
+        <span class="text-transparent">un'altra mail</span>
+        con tutte le
         <br />
-        necessary details (location, times, and prices) .
+        informazioni necessarie (location, orari, e prezzi) .
         <br />
-        <span class="text-transparent">Good luck !</span>
+        <span class="text-transparent">Buona fortuna !</span>
     </p>
 </div>
 
