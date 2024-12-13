@@ -166,7 +166,13 @@
         />
       {/snippet}
     </Form.Control>
-    <Form.Description>Vista l’alta richiesta non possiamo purtroppo prendere tutti, spiegaci dunque perché dovremmo scegliere te o il tuo gruppo di amici</Form.Description>
+    <Form.Description>
+      {#if $formData.isGroup}
+      Vista l’alta richiesta, non possiamo accettare tutti. Raccontaci quindi perché dovremmo scegliere proprio il tuo gruppo di amici!
+      {:else}
+      Vista l’alta richiesta, non possiamo accettare tutti. Raccontaci quindi perché dovremmo scegliere proprio te!
+      {/if}
+    </Form.Description>
     <div class="flex flex-row">
       <Form.FieldErrors class="text-transparent">c</Form.FieldErrors>
       <Form.FieldErrors />
