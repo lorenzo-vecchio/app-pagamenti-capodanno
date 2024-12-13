@@ -1,6 +1,5 @@
 <script lang="ts">
     import type { PageData } from "./$types.js";
-    import GradButton from "$lib/components/GradButton.svelte";
     import SettingsForm from "./settings/settings-form.svelte";
 
     export let data: PageData;

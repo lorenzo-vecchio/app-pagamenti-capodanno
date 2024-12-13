@@ -1,5 +1,4 @@
 <script lang="ts">
-  import GradButton from "$lib/components/GradButton.svelte";
   import * as Form from "$lib/components/ui/form/index";
   import { Input } from "$lib/components/ui/input/index";
   import { Switch } from "$lib/components/ui/switch";
