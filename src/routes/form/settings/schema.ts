@@ -17,7 +17,6 @@ export const formSchema = z.object({
   email: z.string().email({ message: "Invalid email" }),
   reason: z
     .string()
-    .min(30, { message: "Reason must be at least 30 characters" })
     .max(500, { message: "Reason must be at most 500 characters" }),
   dateOfBirth: z
     .string()

@@ -9,6 +9,7 @@
   import { Textarea } from "$lib/components/ui/textarea";
   import { Button } from "$lib/components/ui/button";
   import { page } from "$app/stores";
+  import { Description } from "formsnap";
   $: paramsGroupId = $page.url.searchParams.get("groupId");
 
   // Import the data returned by the load function
@@ -156,16 +157,16 @@
     <Form.Control>
       {#snippet children({ props })}
         <Form.Label class="mb-3"
-          >Reason why you should come <span class="text-destructive">*</span
-          ></Form.Label
+          >Reason why you should come</Form.Label
         >
         <Textarea
-          placeholder="Reason why should choose you...   (min. 200 characters max 500)"
+          placeholder="Messaggio opzionale, incrementa le tue chance di essere selezionato"
           {...props}
           bind:value={$formData.reason}
         />
       {/snippet}
     </Form.Control>
+    <Form.Description>Vista l’alta richiesta non possiamo purtroppo prendere tutti, spiegaci dunque perché dovremmo scegliere te o il tuo gruppo di amici</Form.Description>
     <div class="flex flex-row">
       <Form.FieldErrors class="text-transparent">c</Form.FieldErrors>
       <Form.FieldErrors />
