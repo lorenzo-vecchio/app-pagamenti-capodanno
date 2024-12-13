@@ -1,0 +1,37 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Group {
+  uuid      String   @id @default(uuid())
+  closed    Boolean  @default(false)
+  users     User[]   @relation("GroupUsers")
+  reason    String?  @db.VarChar(500)
+  creatorId String?
+  createdBy User?    @relation("GroupCreator", fields: [creatorId], references: [uuid])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model User {
+  uuid              String   @id @default(uuid())
+  name              String
+  lastName          String
+  instagramUsername String   @unique
+  email             String   @unique
+  dateOfBirth       DateTime
+  groupId           String
+  group             Group    @relation("GroupUsers", fields: [groupId], references: [uuid])
+  createdGroup      Group[]  @relation("GroupCreator")
+}
