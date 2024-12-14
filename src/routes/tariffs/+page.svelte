@@ -1,6 +1,39 @@
 <script lang="ts">
     import Button from "$lib/components/ui/button/button.svelte";
     import * as Card from "$lib/components/ui/card/index";
+
+    let tariffs: {
+        title: string;
+        description?: string;
+        tariff: number;
+        select: boolean;
+    }[] = $state([
+        {
+            title: "Standard",
+            description: "1 drink",
+            tariff: 10,
+            select: false,
+        },
+        {
+            title: "Premium",
+            description: "2 drink",
+            tariff: 15,
+            select: false,
+        },
+        {
+            title: "Gold",
+            description: "2 drink + cibo",
+            tariff: 20,
+            select: false,
+        },
+    ]);
+
+    function tariffSelected(id: number) {
+        tariffs.forEach((tariff, index) => {
+            if (tariff.select) tariff.select = false;
+            if (id == index) tariff.select = true;
+        });
+    }
 </script>
 
 <div class="flex flex-col h-screen md:px-3 lg:px-5">
@@ -12,39 +45,23 @@
     <div
         class="h-full flex flex-col lg:flex-row align-center lg:justify-center items-center gap-x-10 gap-y-4 overflow-y-auto"
     >
-        <Card.Root
-            class="w-1/2 lg:w-2/12 flex flex-col items-center text-center cursor-pointer"
-        >
-            <Card.Header>
-                <Card.Title>Standard</Card.Title>
-                <Card.Description>1 drink</Card.Description>
-            </Card.Header>
-            <Card.Content>
-                <p class="text-4xl font-bold">10 €</p>
-            </Card.Content>
-        </Card.Root>
-        <Card.Root
-            class="w-1/2 lg:w-2/12 flex flex-col items-center text-center cursor-pointer"
-        >
-            <Card.Header>
-                <Card.Title>Standard</Card.Title>
-                <Card.Description>2 drink</Card.Description>
-            </Card.Header>
-            <Card.Content>
-                <p class="text-4xl font-bold">15 €</p>
-            </Card.Content>
-        </Card.Root>
-        <Card.Root
-            class="w-1/2 lg:w-2/12 flex flex-col items-center text-center cursor-pointer"
-        >
-            <Card.Header>
-                <Card.Title>Standard</Card.Title>
-                <Card.Description>2 drink + cibo</Card.Description>
-            </Card.Header>
-            <Card.Content>
-                <p class="text-4xl font-bold">20 €</p>
-            </Card.Content>
-        </Card.Root>
+        {#each tariffs as tariff, idx (idx)}
+            <Card.Root
+                class="w-1/2 lg:w-1/6 xl:w-52 flex flex-col items-center text-center cursor-pointer"
+                style={tariff.select ? "background-color: #27272a;" : ""}
+                onclick={() => {
+                    tariffSelected(idx);
+                }}
+            >
+                <Card.Header>
+                    <Card.Title>{tariff.title}</Card.Title>
+                    <Card.Description>{tariff.description}</Card.Description>
+                </Card.Header>
+                <Card.Content>
+                    <p class="text-4xl font-bold">{tariff.tariff} €</p>
+                </Card.Content>
+            </Card.Root>
+        {/each}
     </div>
     <div class="h-max flex flex-row align-center justify-between">
         <Button
