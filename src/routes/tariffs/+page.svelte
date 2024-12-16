@@ -43,7 +43,7 @@
         </h2>
     </div>
     <div
-        class="h-full flex flex-col lg:flex-row align-center lg:justify-center items-center gap-x-10 gap-y-4 overflow-y-auto"
+        class="h-screen flex flex-col lg:flex-row align-center lg:justify-center items-center gap-x-10 gap-y-4 overflow-y-auto"
     >
         {#each tariffs as tariff, idx (idx)}
             <Card.Root
