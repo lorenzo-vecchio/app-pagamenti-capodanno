@@ -8,6 +8,22 @@ declare global {
     // interface PageState {}
     // interface Platform {}
   }
+  type EmailConfigAuth = {
+    user: string,
+    pass: string
+  }
+  type EmailConfig = {
+    host: string,
+    port: number,
+    secure: boolean,
+    auth: EmailConfigAuth
+  }
+  type MailOptions = {
+    from: string,
+    to: string,
+    subject: string,
+    html: string
+  }
 }
 
 export {};
