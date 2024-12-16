@@ -7,7 +7,7 @@
 <div
     class="flex flex-col items-center justify-center h-screen lg:gap-y-8 px-2 lg:px-8"
 >
-    <Lottie animationData={fail} className="w-16 h-16" />
+    <Lottie animationData={fail} loop={false} className="w-16 h-16" />
     <p
         class="text-center uppercase text-white text-sm lg:text-xl font-black"
     >

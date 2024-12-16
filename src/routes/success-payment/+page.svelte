@@ -7,7 +7,7 @@
 <div
     class="flex flex-col items-center justify-center h-screen lg:gap-y-8 px-2 lg:px-8"
 >
-    <Lottie animationData={success} />
+    <Lottie animationData={success} loop={false} stopFrame={11} />
     <p
         class="text-center uppercase text-white text-sm lg:text-xl font-black bg-clip-text bg-gradient-to-r from-customStart to-customEnd"
     >

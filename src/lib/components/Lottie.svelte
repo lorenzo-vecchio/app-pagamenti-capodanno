@@ -2,10 +2,13 @@
     import { onMount } from 'svelte';
 
     let lottie: any;
+
+    // Component props
     export let animationData: object;
     export let loop: boolean = true;
     export let autoplay: boolean = true;
     export let className: string = '';
+    export let stopFrame: number | null = null; // Frame to stop at (optional)
 
     let container: HTMLDivElement;
     let animation: any;
@@ -24,12 +27,21 @@
                 autoplay,
                 animationData
             });
+
+            // Add listener to stop at a specific frame if stopFrame is defined
+            if (stopFrame !== null) {
+                animation.addEventListener('enterFrame', () => {
+                    if (animation.currentFrame >= stopFrame) {
+                        animation.pause();
+                    }
+                });
+            }
         };
 
         // Call the async function
         loadAnimation();
 
-        // Return the cleanup function
+        // Cleanup the animation on component destroy
         return () => {
             if (animation) {
                 animation.destroy();
