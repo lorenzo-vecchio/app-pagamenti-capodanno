@@ -1,6 +1,18 @@
 // See https://svelte.dev/docs/kit/types#app.d.ts
+
+import type { Attachment } from "nodemailer/lib/mailer"
+
 // for information about these interfaces
 declare global {
+  namespace NodeJS {
+    interface ProcessEnv {
+      DATABASE_URL: string;
+      EMAIL_USER: string;
+      EMAIL_PASSWORD: string;
+      EMAIL_PORT: number;
+      EMAIL_HOST: string
+    }
+  }
   namespace App {
     // interface Error {}
     // interface Locals {}
@@ -22,7 +34,13 @@ declare global {
     from: string,
     to: string,
     subject: string,
-    html: string
+    html: string,
+    attachments?: Attachment[]
+  }
+  type EmailAttachment = {
+    filename: string,
+    path: string,
+    cid?: string
   }
 }
 
