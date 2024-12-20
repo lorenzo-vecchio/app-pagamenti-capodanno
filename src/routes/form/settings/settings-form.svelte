@@ -181,18 +181,18 @@
       <Button
         variant="secondary"
         class="mt-3 mb-3 ml-3 lg:text-2xl lg:p-6 uppercase font-bold"
-        href="/group/{paramsGroupId}">Back</Button
+        href="/group/{paramsGroupId}">Indietro</Button
       >
     {:else}
       <Button
         variant="secondary"
         class="mt-3 mb-3 ml-3 lg:text-2xl lg:p-6 uppercase font-bold"
-        href="/">Back</Button
+        href="/">Indietro</Button
       >
     {/if}
     <Form.Button
       class="mt-3 mb-3 mr-3 lg:text-2xl lg:p-6 text-white bg-gradient-to-r from-customStart to-customEnd uppercase integral-bold"
-      >Submit</Form.Button
+      >Avanti</Form.Button
     >
   </div>
 </form>

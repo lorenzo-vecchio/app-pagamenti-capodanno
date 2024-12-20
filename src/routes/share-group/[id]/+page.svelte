@@ -23,10 +23,16 @@
       copied = false;
     }, 2000);
   }
+
+  function keyboardButtonClick(e:KeyboardEvent) {
+    if (e.key == "Enter") copyButtonClick();
+  }
 </script>
 
 <div class="w-full h-screen flex flex-col justify-center items-center">
-  <h1 class="font-bold text-lg lg:text-5xl mb-7 mx-4 text-center">INVITE YOUR FRIENDS!</h1>
+  <h1 class="font-bold text-lg lg:text-5xl mb-7 mx-4 text-center">
+    INVITE YOUR FRIENDS!
+  </h1>
   <h3 class="font-bold text-sm lg:text-xl uppercase mb-20 mx-4 text-center">
     Share this link with your friends to let them join your group
   </h3>
@@ -37,7 +43,12 @@
   <Tooltip.Provider>
     <Tooltip.Root>
       <Tooltip.Trigger>
-        <div on:click={copyButtonClick}>
+        <div
+          on:click={copyButtonClick}
+          role="button"
+          tabindex="0"
+          on:keydown={keyboardButtonClick}
+        >
           <Button variant="secondary" class="inline-flex justify-start">
             {#if copied}
               <Check class="text-green-500" />
@@ -57,29 +68,44 @@
   <div class="flex flex-row gap-3 mt-3">
     <!--{data.creator}-->
 
-    <Button variant="secondary" class="p-2 h-auto" href={
-      'whatsapp://send?text=' +
-      encodeURIComponent(
-        `You are invited to join ${data.creator}'s group for this New Year's party! Check it out here: ${baseUrl}/group/${data.id}`
-      )
-    }>
+    <Button
+      variant="secondary"
+      class="p-2 h-auto"
+      href={"whatsapp://send?text=" +
+        encodeURIComponent(
+          `You are invited to join ${data.creator}'s group for this New Year's party! Check it out here: ${baseUrl}/group/${data.id}`,
+        )}
+    >
       <BrandIcon name="whatsapp" size="24" color="green" />
     </Button>
 
-    <Button variant="secondary" class="p-2 h-auto" href={
-      'mailto:' + 
-      '?subject=' + encodeURIComponent('Invitation to Join New Year\'s Party') + 
-      '&body=' + encodeURIComponent('You are invited to join ' + data.creator + '\'s group for this New Year\'s party! Check it out here: ' + baseUrl + '/group/' + data.id)
-    }>
+    <Button
+      variant="secondary"
+      class="p-2 h-auto"
+      href={"mailto:" +
+        "?subject=" +
+        encodeURIComponent("Invitation to Join New Year's Party") +
+        "&body=" +
+        encodeURIComponent(
+          "You are invited to join " +
+            data.creator +
+            "'s group for this New Year's party! Check it out here: " +
+            baseUrl +
+            "/group/" +
+            data.id,
+        )}
+    >
       <Mail />
     </Button>
 
-    <Button variant="secondary" class="p-2 h-auto" href={
-      'https://twitter.com/intent/tweet?text=' +
-      encodeURIComponent(
-        `You are invited to join ${data.creator}'s group for this New Year's party! Check it out here: ${baseUrl}/group/${data.id}`
-      )
-    }>
+    <Button
+      variant="secondary"
+      class="p-2 h-auto"
+      href={"https://twitter.com/intent/tweet?text=" +
+        encodeURIComponent(
+          `You are invited to join ${data.creator}'s group for this New Year's party! Check it out here: ${baseUrl}/group/${data.id}`,
+        )}
+    >
       <BrandIcon name="x" size="24" color="white" />
     </Button>
   </div>

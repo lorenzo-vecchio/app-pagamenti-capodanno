@@ -66,7 +66,7 @@
     <div class="h-max flex flex-row align-center justify-between">
         <Button
             class="mt-3 mb-3 ml-3 lg:text-2xl lg:p-6 uppercase font-bold"
-            href="/">Back</Button
+            href="/">Indietro</Button
         >
         <Button
             class="mt-3 mb-3 mr-3 lg:text-2xl lg:p-6 text-white bg-gradient-to-r from-customStart to-customEnd uppercase integral-bold"
