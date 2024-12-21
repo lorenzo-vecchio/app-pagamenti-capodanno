@@ -3,6 +3,7 @@
     import * as Card from "$lib/components/ui/card/index";
 
     let dates: {
+        dateObj: Date;
         day: number;
         mounth: string;
         dayName: string;
@@ -12,6 +13,7 @@
         available: boolean;
     }[] = $state([
         {
+            dateObj: new Date(2024, 11, 28),
             day: 28,
             mounth: "Dicembre",
             dayName: "Sabato",
@@ -21,6 +23,7 @@
             available: false,
         },
         {
+            dateObj: new Date(2024, 11, 31),
             day: 31,
             mounth: "Dicembre",
             dayName: "Martedì",
@@ -30,6 +33,7 @@
             available: true,
         },
         {
+            dateObj: new Date(2025, 1, 18),
             day: 18,
             mounth: "Gennaio",
             dayName: "Sabato",
@@ -75,7 +79,9 @@
                 {date.soldOut ? 'bg-red-700' : 'cursor-pointer'}
                 border-none
                 "
-                    style={date.select && date.available ? "background-color: #27272a;" : ""}
+                    style={date.select && date.available
+                        ? "background-color: #27272a;"
+                        : ""}
                     onclick={() => {
                         if (date.available) dateSelected(idx);
                     }}
@@ -99,7 +105,11 @@
                                 class="lg:text-3xl font-bold uppercase
                                 {date.soldOut ? '' : 'text-transparent'}"
                             >
-                                {date.dayName}{#if date.soldOut}<br><span class="text-xs">Sold out</span>{:else if !date.available}<br><span class="text-xs">Non disponibile</span>{/if}
+                                {date.dayName}{#if date.soldOut}<br /><span
+                                        class="text-xs">Sold out</span
+                                    >{:else if !date.available}<br /><span
+                                        class="text-xs">Non disponibile</span
+                                    >{/if}
                             </p>
                         </Card.Content>
                     </div>
