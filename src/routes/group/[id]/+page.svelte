@@ -4,6 +4,8 @@
   import Badge from "$lib/components/ui/badge/badge.svelte";
   import Button from "$lib/components/ui/button/button.svelte";
   import { invalidate } from "$app/navigation";
+  import * as AlertDialog from "$lib/components/ui/alert-dialog/index.js";
+  import { buttonVariants } from "$lib/components/ui/button/index.js";
 
   export let data: PageData;
 
@@ -96,10 +98,32 @@
     <h2 class="mt-10">This group is closed and wating for verification.</h2>
   {:else}
     <div class="flex flex-row mt-10">
-      <Button class='mr-20' href='/form?groupId={data.group.uuid}'>Add+</Button>
-      <button on:click={submitGroupForVerification}>
-        <Button class='text-white bg-gradient-to-r from-customStart to-customEnd uppercase integral-bold'>Submit for verification</Button>
-      </button>
+      <Button class="mr-20" href="/form?groupId={data.group.uuid}">Add+</Button>
+      <AlertDialog.Root>
+        <AlertDialog.Trigger
+          class="
+          text-white bg-gradient-to-r from-customStart to-customEnd uppercase integral-bold {buttonVariants(
+            { variant: 'outline' },
+          )}
+          "
+        >
+          Submit for verification
+        </AlertDialog.Trigger>
+        <AlertDialog.Content>
+          <AlertDialog.Header>
+            <AlertDialog.Title>Sei sicuro?</AlertDialog.Title>
+            <AlertDialog.Description>
+              Procedendo verrà inviata la richiesta del gruppo. Assicurati che tutti i tuoi amici/conoscenti siano presenti.
+            </AlertDialog.Description>
+          </AlertDialog.Header>
+          <AlertDialog.Footer>
+            <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
+            <button on:click={submitGroupForVerification}>
+              <AlertDialog.Action>Continue</AlertDialog.Action>
+            </button>
+          </AlertDialog.Footer>
+        </AlertDialog.Content>
+      </AlertDialog.Root>
     </div>
   {/if}
 </div>
