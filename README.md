@@ -40,16 +40,14 @@ You can preview the production build with `npm run preview`.
 # Setup iniziale:
 
 ```
-docker run --name mysql-prisma-dev \
-  -e MYSQL_ROOT_PASSWORD=secret \
-  -e MYSQL_DATABASE=prisma_dev \
-  -e MYSQL_USER=prisma_user \
-  -e MYSQL_PASSWORD=prisma_pass \
-  -p 3306:3306 \
-  -d mysql:latest
-```
-
-```
 npx prisma migrate dev --name init
 npx prisma generate
 ```
+
+# .env file:
+Ti serviranno i seguenti parametri nel tuo env file:
+DATABASE_URL -> database url per un db postgres
+EMAIL_HOST
+EMAIL_USER
+EMAIL_PASSWORD
+EMAIL_PORT

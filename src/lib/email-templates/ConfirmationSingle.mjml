@@ -1,0 +1,36 @@
+<mjml>
+  <mj-head>
+    <mj-title>✨ Processo di Selezione Avviato | ProjectX 🎆</mj-title>
+  </mj-head>
+  <mj-body background-color="black">
+    <mj-section>
+      <mj-column>
+        <mj-image src="cid:logo" alt="ProjectX Logo" width="150px" />
+        <mj-text font-size="20px" color="#ffffff" align="center">
+          <br>✨ Processo di Selezione Avviato | ProjectX 🎆
+        </mj-text>
+        <mj-text font-size="16px" color="#ffffff" align="left">
+          Ciao, {{firstName}} <br><br>
+          🎆 Grazie per il tuo interesse nella festa di Capodanno più
+                esclusiva dell'anno!
+                <br><br>La tua candidatura è stata ricevuta e
+                stiamo valutando la tua partecipazione.
+                
+                <br><br>Al momento, sei entrato
+                nel nostro processo di selezione: solo alcuni fortunati avranno
+                l'opportunità di festeggiare con noi l'arrivo del 2025. 🎊
+                
+                <br><br>Cosa succede ora? Ti aggiorneremo nei prossimi giorni sull'esito
+                della selezione.<br><br> Nel frattempo, tieni d'occhio la tua casella
+                email (e controlla lo spam, non si sa mai!). ✨ Rimani
+                sintonizzato perché Capodanno si avvicina, e questa potrebbe
+                essere un’esperienza indimenticabile.
+                <br><br>Grazie ancora per averci
+                scelto,
+                <br>Il Team ProjectX
+        </mj-text>
+        <mj-text font-size="11px" color="gray" align="left"><br><br><br>Il tuo codice cliente é: {{uuid}}</mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

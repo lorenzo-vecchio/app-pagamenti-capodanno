@@ -4,6 +4,7 @@ import { superValidate } from "sveltekit-superforms";
 import { formSchema } from "./settings/schema";
 import { zod } from "sveltekit-superforms/adapters";
 import { PrismaClient } from "@prisma/client";
+import { emailServiceProvider } from "$lib/services/EmailService";
 
 export const load: ServerLoad = async ({ url }) => {
   const groupId = url.searchParams.get("groupId");
@@ -124,8 +125,14 @@ export const actions: Actions = {
     });
     await prisma.$disconnect();
 
-    // redirect to next page
+    // send email and redirect to next page
+    const emailService = emailServiceProvider();
     if (!form.data.isGroup) {
+      emailService.sendConfirmationSingle(
+        form.data.email,
+        'Abbiamo ricevuto la tua candidatura! ProjectX',
+        { firstName: form.data.name, uuid: updatedGroup.uuid }
+      )
       throw redirect(303, "/submission-confirmation");
     } else {
       throw redirect(303, "/share-group/" + group.uuid);
