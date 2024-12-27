@@ -74,16 +74,16 @@
             <Accordion.Content>
               <div class="grid grid-cols-2 gap-4 items-center mt-2">
                 <p class="font-bold">Name:</p>
-                <p>{data.group.createdBy?.name}</p>
+                <p>{user.name}</p>
 
                 <p class="font-bold">Last Name:</p>
-                <p>{data.group.createdBy?.lastName}</p>
+                <p>{user.lastName}</p>
 
                 <p class="font-bold">Email:</p>
-                <p>{data.group.createdBy?.email}</p>
+                <p>{user.email}</p>
 
                 <p class="font-bold">Instagram:</p>
-                <p>@{data.group.createdBy?.instagramUsername}</p>
+                <p>@{user.instagramUsername}</p>
               </div>
             </Accordion.Content>
           </Accordion.Item>
